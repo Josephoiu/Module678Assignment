@@ -1,13 +1,12 @@
 package org.textgame;
 
-public class MazeConstructor {
+public class MazeNavigatorService {
     private Room currentRoom;
-    private static MazeConstructor single_instance = null;
-    private MazeConstructorHelper mazeConstructorHelper = new MazeConstructorHelper();
-    public static MazeConstructor getInstance() {
+    private static MazeNavigatorService single_instance = null;
+    private boolean isFinished = false;
+    public static MazeNavigatorService getInstance() {
         if(single_instance == null){
-            single_instance = new MazeConstructor();
-
+            single_instance = new MazeNavigatorService();
         }
         return single_instance;
     }
@@ -23,7 +22,6 @@ public class MazeConstructor {
     public String exitCurrentRoom() {
         return "nothing";
     }
-
     public String lootCurrentRoom() {
         return "nothing";
     }
@@ -34,5 +32,12 @@ public class MazeConstructor {
         } else {
             return false;
         }
+    }
+    public boolean isFinished() {
+        return isFinished;
+    }
+    private void setAllRooms(){
+        MazeCreator mazeCreator = new MazeCreator();
+        mazeCreator.createMaze();
     }
 }

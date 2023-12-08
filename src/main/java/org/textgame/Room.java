@@ -1,77 +1,39 @@
 package org.textgame;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import static org.textgame.EnumUtility.enumConstantstoList;
 
-abstract class Room {
+public abstract class Room {
     private String name;
-    private Room north, south, east, west, up, down; //These are just references for future use, not objects
+    private final HashMap<Character,Room> availableRooms = createRoomList();
+    private final List<Directions> enumDirections = enumConstantstoList(Directions.class);
     public Room(String name) {
         this.name = name;
     }
-    abstract String getDescription();
+    protected abstract String getDescription();
     public Room getAdjoiningRoom(char direction){
-        if(direction == 'n'&& this.north != null){
-            return north;
+        for(int i = 0; i < enumDirections.size(); i++) {
+            if(direction == enumDirections.get(i).getSingleChar() && availableRooms.get(direction) != null){
+                return availableRooms.get(i);
+            }
         }
-        else if(direction == 's' && this.south != null){
-            return south;
-        }
-        else if(direction == 'e' && this.east != null){
-            return east;
-        }
-        else if(direction == 'w' && this.west != null){
-            return west;
-        }
-        else if(direction == 'u' && this.up != null){
-            return up;
-        }
-        else if(direction == 'd' && this.down != null){
-            return down;
-        }
-        else {
-            return null;
-        }
+        return null;
     }
     public boolean isValidDirection(char direction){
-        if(direction == 'n' && this.north != null){
-            return true;
+        for (Directions enumDirection : enumDirections) {
+            if (direction == enumDirection.getSingleChar() && availableRooms.get(direction) != null) {
+                return true;
+            }
         }
-        else if(direction == 's' && this.south != null){
-            return true;
-        }
-        else if(direction == 'e' && this.east != null){
-            return true;
-        }
-        else if(direction == 'w' && this.west != null){
-            return true;
-        }
-        else if(direction == 'u' && this.up != null){
-            return true;
-        }
-        else if(direction == 'd' && this.down != null){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return false;
     }
-
     public String getExits(){
-        String getExit;
-        ArrayList<Room> exits = new ArrayList<Room>();
-        exits.add(this.north); exits.add(this.south);
-        exits.add(this.east);  exits.add(this.west);
-        exits.add(this.up);    exits.add(this.down);
-
-        ArrayList<String> charCompass = new ArrayList<String>();
-        charCompass.add("North"); charCompass.add("South");
-        charCompass.add("East");  charCompass.add("West");
-        charCompass.add("Up");    charCompass.add("Down");
-
         String summary = "The following are available directions:";
-        for(int i = 0; i < exits.size(); i++) {
-            if (exits.get(i) != null) {
-                summary += " " + charCompass.get(i);
+        for(int i = 0; i < availableRooms.size(); i++) {
+            if (availableRooms.get(i) != null) {
+                summary += " " + enumDirections.get(i).getSingleChar();
             }
         }
         return summary;
@@ -79,22 +41,25 @@ abstract class Room {
     public String getName(){
         return this.name;
     }
-    public void setNorth(Room north) {
-        this.north = north;
+    private HashMap<Character, Room> createRoomList(){
+        for(int i = 0; i < enumDirections.size(); i++) {
+            availableRooms.put(enumDirections.get(i).getSingleChar(), null);
+        }
+        return availableRooms;
     }
-    public void setSouth(Room south) {
-        this.south = south;
+    public void setRoom(Room room, Character placement){
+        for(int i = 0; i < availableRooms.size(); i++) {
+            if(availableRooms.containsKey(placement)){
+                availableRooms.putIfAbsent(placement, room);
+            }
+        }
     }
-    public void setEast(Room east) {
-        this.east = east;
-    }
-    public void setWest(Room west) {
-        this.west = west;
-    }
-    public void setUp(Room up) {
-        this.up = up;
-    }
-    public void setDown(Room down) {
-        this.down = down;
+    public void setRoom(Room room, String placement){
+        char stringVersion = placement.toLowerCase().charAt(0);
+        for(int i = 0; i < availableRooms.size(); i++) {
+            if(availableRooms.containsKey(stringVersion)){
+                availableRooms.putIfAbsent(stringVersion, room);
+            }
+        }
     }
 }
