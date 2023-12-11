@@ -47,18 +47,10 @@ public abstract class Room {
         }
         return availableRooms;
     }
-    public void setRoom(Room room, Character placement){
+    public void setRoom(Room room, Directions directions){
         for(int i = 0; i < availableRooms.size(); i++) {
-            if(availableRooms.containsKey(placement)){
-                availableRooms.putIfAbsent(placement, room);
-            }
-        }
-    }
-    public void setRoom(Room room, String placement){
-        char stringVersion = placement.toLowerCase().charAt(0);
-        for(int i = 0; i < availableRooms.size(); i++) {
-            if(availableRooms.containsKey(stringVersion)){
-                availableRooms.putIfAbsent(stringVersion, room);
+            if(availableRooms.containsKey(directions.getSingleChar())){
+                availableRooms.putIfAbsent(directions.getSingleChar(), room);
             }
         }
     }

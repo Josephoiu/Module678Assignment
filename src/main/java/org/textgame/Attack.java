@@ -5,7 +5,7 @@ public class Attack {
     int damage;
     AttackTypes attackType;
 
-    public Attack(String name, int damage, AttackTypes attackType) {
+    public Attack(String name, AttackTypes attackType) {
         this.name = name;
         this.damage = attackType.getDamageAmount();
         this.attackType = attackType;

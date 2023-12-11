@@ -14,6 +14,6 @@ public class EntranceRoom extends InteractableRoom {
 
     @Override
     public String interactDesc() {
-        return null;
+        return "";
     }
 }

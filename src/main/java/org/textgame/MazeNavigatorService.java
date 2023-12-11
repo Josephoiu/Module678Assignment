@@ -1,5 +1,9 @@
 package org.textgame;
 
+import org.textgame.roomchoices.Exitable;
+import org.textgame.roomchoices.Interactable;
+import org.textgame.roomchoices.Lootable;
+
 public class MazeNavigatorService {
     private Room currentRoom;
     private static MazeNavigatorService single_instance = null;
@@ -17,13 +21,26 @@ public class MazeNavigatorService {
         return currentRoom.getExits();
     }
     public String interactWithCurrentRoom() {
-        return "nothing";
+        if(currentRoom instanceof Interactable){
+            return ((Interactable) currentRoom).interactDesc();
+        } else {
+            return "\nThis room was already interacted with.";
+        }
     }
     public String exitCurrentRoom() {
-        return "nothing";
+        if(currentRoom instanceof Exitable){
+            isFinished = true;
+            return ((Exitable) currentRoom).exitText();
+        } else {
+            return "\nThis room cannot be exited.";
+        }
     }
     public String lootCurrentRoom() {
-        return "nothing";
+        if(currentRoom instanceof Lootable){
+            return ((Lootable) currentRoom).lootDesc();
+        } else {
+            return "\nThis room cannot be looted.";
+        }
     }
     public boolean move(char direction) {
         if (currentRoom.isValidDirection(direction)) {
