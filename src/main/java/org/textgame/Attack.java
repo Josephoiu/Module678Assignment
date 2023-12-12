@@ -3,14 +3,12 @@ package org.textgame;
 public class Attack {
     String name;
     int damage;
-    AttackTypes attackType;
-
-    public Attack(String name, AttackTypes attackType) {
+    String attackDesc;
+    public Attack(String name, int damage, String attackDesc) {
         this.name = name;
-        this.damage = attackType.getDamageAmount();
-        this.attackType = attackType;
+        this.damage = damage;
+        this.attackDesc = attackDesc;
     }
-
     public String getName() {
         return name;
     }
@@ -19,7 +17,7 @@ public class Attack {
         return damage;
     }
 
-    public String getAttackTypeName() {
-        return attackType.getAttackName();
+    public String getAttackDesc() {
+        return attackDesc;
     }
 }

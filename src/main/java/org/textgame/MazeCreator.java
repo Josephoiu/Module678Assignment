@@ -16,7 +16,7 @@ public class MazeCreator {
         TestExitRoom testExitRoom = new TestExitRoom("Exit Room");
 
         //Set Paths
-        setDirectionRoom(entranceRoom,radioRoom,Directions.WEST);
+        setDirectionRoom(entranceRoom,radioRoom,Directions.BOTTOM);
         setDirectionRoom(entranceRoom,testExitRoom,Directions.EAST);
         setCurrentRoom(entranceRoom);
 

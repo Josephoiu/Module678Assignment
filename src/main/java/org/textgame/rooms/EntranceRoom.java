@@ -11,14 +11,15 @@ public class EntranceRoom extends InteractableRoom {
     @Override
     protected String getDescription() {
         ColorsText colorsText = ColorsText.RESET;
-        return "Amongst odd ends and shapes, you awake in an analog landscape rid of coherence and logic.\nOverlapping geometric forms glide past your vision. Static lines intertwine to mark paths." + colorsText.colorString("\nTowering above you is a large locked door.",ColorsText.PURPLE);
+        return "A single ray of light pierces through an above window. You stand next to the railing of a descending staircase.\t" +
+                "Overshadowing you is a large steel door etched with the following symbols," + colorsText.colorString("A diamond, a clover, a heart, and a spade.", ColorsText.BLUE);
     }
 
     @Override
     public String interactDesc() {
         setInteractAction(true);
         ColorsText colorsText = ColorsText.RESET;
-        return "Symbols are etched carefully on the metal door." +
-                colorsText.colorString(" A diamond, a clover, a heart, and a spade.",ColorsText.BLUE);
+        return "Moving your finger across the etchings, you notice you can push them inwards\t"+
+                "These seem to be" + colorsText.colorString("unique slots", ColorsText.PURPLE);
     }
 }

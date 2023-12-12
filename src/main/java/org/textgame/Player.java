@@ -1,5 +1,7 @@
 package org.textgame;
 
+import org.textgame.items.Item;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -19,7 +21,7 @@ public class Player {
             return "Your inventory is empty.";
         } else {
             for (Item item : inventory) {
-                sb.append(item.getName()).append(" - ").append(item.getDescription()).append("\n");
+                sb.append(item.getName()).append("\t").append(item.getItemDescription()).append("\n");
             }
             return sb.toString();
         }

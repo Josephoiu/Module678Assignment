@@ -16,4 +16,9 @@ public class RadioRoom extends LootableRoom {
         return null;
     }
 
+    @Override
+    public void addItem() {
+
+    }
+
 }

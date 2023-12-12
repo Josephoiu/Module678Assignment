@@ -1,5 +1,6 @@
 package org.textgame.roomchoices;
 
+import org.textgame.Player;
 import org.textgame.Room;
 
 public abstract class LootableRoom extends Room implements Lootable{
@@ -8,6 +9,7 @@ public abstract class LootableRoom extends Room implements Lootable{
         super(name);
     }
     protected abstract String getDescription();
+    public abstract void addItem();
     @Override
     public void setLootAction(boolean lootAction) {
         this.lootAction = lootAction;
