@@ -2,7 +2,7 @@ package org.textgame.roomchoices;
 
 import org.textgame.Room;
 
-abstract class LootableRoom extends Room implements Lootable{
+public abstract class LootableRoom extends Room implements Lootable{
     boolean lootAction;
     public LootableRoom(String name) {
         super(name);

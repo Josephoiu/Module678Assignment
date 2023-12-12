@@ -14,12 +14,16 @@ public class Instructions {
     }
     private void setDirections(){
         for (Directions enumDirection : enumDirections) {
-            instructions.add("'" + enumDirection.getSingleChar() + "'" + " - " + enumDirection.getName());
+            instructions.add("'" + enumDirection.getSingleChar() + "'" + " - Move " + enumDirection.getName());
         }
     }
     private void addExtraMechanic(){
         for (GameMechanics enumMechanic : enumExtraMechanics) {
             instructions.add("'" + enumMechanic.getSingleChar() + "'" + " - " + enumMechanic.getName());
         }
+    }
+
+    public List<String> getInstructions() {
+        return instructions;
     }
 }

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Player {
     private int health;
     private int score;
-    private ArrayList<String> inventory = new ArrayList<String>();
+    private ArrayList<Item> inventory = new ArrayList<Item>();
     private ArrayList<Attack> availableAttacks = new ArrayList<>();
-    public void addToInventory(String item) {
+    public void addToInventory(Item item) {
         inventory.add(item);
     }
     public void addToScore(int score) {
@@ -18,8 +18,8 @@ public class Player {
         if (inventory.isEmpty()) {
             return "Your inventory is empty.";
         } else {
-            for (String item : inventory) {
-                sb.append(item).append("\n");
+            for (Item item : inventory) {
+                sb.append(item.getName()).append(" - ").append(item.getDescription()).append("\n");
             }
             return sb.toString();
         }
@@ -41,8 +41,8 @@ public class Player {
     public int returnIndex(String item){
         return item.indexOf(item);
     }
-    public void intChangeSpecificItem(String item, String changedItem){
-        int index = returnIndex(item);
+    public void intChangeSpecificItem(Item item, Item changedItem){
+        int index = returnIndex(item.getName());
         inventory.set(index, changedItem);
     }
     public int getScore() {

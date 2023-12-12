@@ -3,7 +3,7 @@ package org.textgame;
 public enum GameMechanics {
     INTERACT("Interact",'i'),
     LOOT("Loot", 'l'),
-    EXIT("Exit", 'e'),
+    EXIT("Exit", 'x'),
     INVENTORY("Inventory",'v'),
     REPEATCOMMAND("Repeat Instructions", 'c');
 
