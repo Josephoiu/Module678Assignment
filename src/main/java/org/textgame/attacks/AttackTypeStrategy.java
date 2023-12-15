@@ -1,7 +1,7 @@
 package org.textgame.attacks;
 
-import org.textgame.items.Item;
+import org.textgame.Attack;
 
 public interface AttackTypeStrategy {
-    int addAttackTypeValue(Item item);
+    int addAttackTypeValue(Attack attack);
 }

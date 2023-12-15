@@ -1,11 +1,7 @@
 package org.textgame;
 
-import org.textgame.roomchoices.DullRoom;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.security.KeyStore;
+import java.util.*;
 
 import static org.textgame.EnumUtility.enumConstantstoList;
 
@@ -35,13 +31,12 @@ public abstract class Room {
         return false;
     }
     public String getExits(){
-        String summary = "The following are available directions:";
-        int enumCounter = enumDirections.size();
-        for(Room room : availableRooms.values()){
-            if(room != null){
-                summary += " -" + enumDirections.get(enumCounter).getName() + "-";
+        Directions directions = Directions.NORTH;
+        String summary = "The following are available directions:\n";
+        for(Map.Entry<Character, Room> entry: availableRooms.entrySet()){
+            if(entry.getValue() != null){
+                summary += "   <" + directions.stringFromChar(entry.getKey()) + " - " + entry.getValue().getName() + ">";
             }
-            enumCounter--;
         }
         return summary;
     }

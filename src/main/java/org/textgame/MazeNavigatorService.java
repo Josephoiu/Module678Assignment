@@ -1,5 +1,6 @@
 package org.textgame;
 
+import org.textgame.items.*;
 import org.textgame.roomchoices.Exitable;
 import org.textgame.roomchoices.Interactable;
 import org.textgame.roomchoices.Lootable;
@@ -14,11 +15,18 @@ public class MazeNavigatorService {
         if (single_instance == null) {
             single_instance = new MazeNavigatorService();
             this.player = player;
-            MazeCreator mazeCreator = new MazeCreator();
+            Fists fists = new Fists("Hands");
+            player.addToInventory(fists);
+            player.setAvailableAttacks(fists.getAttack());
+            MazeCreator mazeCreator = new MazeCreator(player);
             mazeCreator.createMaze();
-            this.currentRoom = mazeCreator.getCurrentRoom();
+            currentRoom = mazeCreator.getCurrentRoom();
         }
         return single_instance;
+    }
+
+    public String getCurrentRoomName() {
+        return currentRoom.getName();
     }
 
     public String getCurrentRoomDescription() {
@@ -32,7 +40,8 @@ public class MazeNavigatorService {
     public String interactWithCurrentRoom() {
         if (currentRoom instanceof Interactable) {
             if (!((Interactable) currentRoom).isInteractAction()) {
-                return (((Interactable) currentRoom).interactDesc());
+                ((Interactable) currentRoom).gainPotentialItem(player);
+                return (((Interactable) currentRoom).interactDesc(player));
             } else if (((Interactable) currentRoom).isInteractAction()) {
                 return ((Interactable) currentRoom).alreadyInteract();
             }
@@ -42,16 +51,18 @@ public class MazeNavigatorService {
 
     public String exitCurrentRoom() {
         if (currentRoom instanceof Exitable) {
-            isFinished = true;
-            return ((Exitable) currentRoom).exitText();
-        } else {
-            return "This room cannot be exited.";
+            if (((Exitable) currentRoom).finishMaze(player)) {
+                isFinished = true;
+                return ((Exitable) currentRoom).exitText();
+            }
         }
+        return "This room cannot be exited.";
     }
 
     public String lootCurrentRoom() {
         if (currentRoom instanceof Lootable) {
             if (!((Lootable) currentRoom).isLootAction()) {
+                ((Lootable) currentRoom).addItem(player);
                 return (((Lootable) currentRoom).lootDesc(player));
             } else if (((Lootable) currentRoom).isLootAction()) {
                 return ((Lootable) currentRoom).alreadyLooted();
@@ -59,19 +70,19 @@ public class MazeNavigatorService {
         }
         return "This room cannot be looted.";
     }
-        public boolean move (char direction){
-            if (currentRoom.isValidDirection(direction)) {
-                currentRoom = currentRoom.getAdjoiningRoom(direction);
-                return true;
-            } else {
-                return false;
-            }
+
+    public boolean move(char direction) {
+        if (currentRoom.isValidDirection(direction)) {
+            currentRoom = currentRoom.getAdjoiningRoom(direction);
         }
-        public boolean isFinished () {
-            return isFinished;
-        }
-        private void setAllRooms () {
-            MazeCreator mazeCreator = new MazeCreator();
-            mazeCreator.createMaze();
-        }
+        return false;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+}

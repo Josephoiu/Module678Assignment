@@ -10,7 +10,7 @@ public class Plush extends Item implements Attackable{
 
     @Override
     public Attack getAttack() {
-        return new Attack("Psychological Trauma",5,"The terrifying glance of the bear gives a chance of " + AttackTypes.PSYCHIC.getAttackName() + " damage, plus years of therapy.");
+        return new Attack("Psychological Trauma",5,"The terrifying glance of the bear gives a chance of " + AttackTypes.PSYCHIC.getAttackName() + " damage, plus years of therapy.",AttackTypes.PSYCHIC);
     }
 
     @Override

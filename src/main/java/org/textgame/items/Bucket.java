@@ -10,7 +10,7 @@ public class Bucket extends Item implements Attackable{
 
     @Override
     public Attack getAttack() {
-        return new Attack("Sludge Toss", 10,"Throw the unknown contents onto your enemies! Chance of " + AttackTypes.ACID.getAttackName() + " damage.");
+        return new Attack("Sludge Toss", 10,"Throw the unknown contents onto your enemies! Chance of " + AttackTypes.ACID.getAttackName() + " damage.", AttackTypes.ACID);
     }
 
     @Override

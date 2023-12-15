@@ -5,6 +5,7 @@ public enum GameMechanics {
     LOOT("Loot", 'l'),
     EXIT("Exit", 'x'),
     INVENTORY("Inventory",'v'),
+    ATTACKS("Attacks", 'a'),
     REPEATCOMMAND("Repeat Instructions", 'c');
 
     String name;

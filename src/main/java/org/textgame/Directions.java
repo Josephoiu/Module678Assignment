@@ -19,4 +19,12 @@ public enum Directions {
     public char getSingleChar() {
         return singleChar;
     }
+    public String stringFromChar(Character character){
+        for (Directions direction: EnumUtility.enumConstantstoList(Directions.class)) {
+            if(direction.getSingleChar() == character){
+                return direction.getName();
+            }
+        }
+        return null;
+    }
 }

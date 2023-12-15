@@ -10,7 +10,7 @@ public class Pipe extends Item implements Attackable{
 
     @Override
     public Attack getAttack() {
-        return new Attack("Pipe Smack",5,"This bent pipe could use some more bending! Bash your enemies with the chance of adding extra" + AttackTypes.BLUNT.getAttackName() + " damage.");
+        return new Attack("Pipe Smack",5,"This bent pipe could use some more bending! Bash your enemies with the chance of adding extra " + AttackTypes.BLUNT.getAttackName() + " damage.",AttackTypes.BLUNT);
     }
 
     @Override

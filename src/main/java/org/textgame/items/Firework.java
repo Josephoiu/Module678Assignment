@@ -10,7 +10,7 @@ public class Firework extends Item implements Attackable{
 
     @Override
     public Attack getAttack() {
-        return new Attack("Fourth of July",20,"Send devastating colored explosives towards your enemies. Chance of adding " + AttackTypes.FIRE.getAttackName() + " damage.");
+        return new Attack("Fourth of July",20,"Send devastating colored explosives towards your enemies. Chance of adding " + AttackTypes.FIRE.getAttackName() + " damage.",AttackTypes.FIRE);
     }
 
     @Override

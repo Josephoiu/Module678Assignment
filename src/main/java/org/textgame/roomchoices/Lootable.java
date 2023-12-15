@@ -7,4 +7,6 @@ public interface Lootable {
     boolean isLootAction();
     String alreadyLooted();
     String lootDesc(Player player);
+    public Player addItem(Player player);
+
 }

@@ -4,10 +4,12 @@ public class Attack {
     String name;
     int damage;
     String attackDesc;
-    public Attack(String name, int damage, String attackDesc) {
+    AttackTypes attackTypes;
+    public Attack(String name, int damage, String attackDesc, AttackTypes attackTypes) {
         this.name = name;
         this.damage = damage;
         this.attackDesc = attackDesc;
+        this.attackTypes = attackTypes;
     }
     public String getName() {
         return name;
@@ -19,5 +21,13 @@ public class Attack {
 
     public String getAttackDesc() {
         return attackDesc;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public AttackTypes getAttackTypes() {
+        return attackTypes;
     }
 }
