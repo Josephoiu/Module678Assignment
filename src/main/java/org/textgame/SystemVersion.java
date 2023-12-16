@@ -2,6 +2,10 @@ package org.textgame;
 
 import java.util.Scanner;
 
+/**
+ * System version of the gameplay loop. Prints out information using the system. The class also
+ * handles input.
+ */
 public class SystemVersion {
     Scanner sc = new Scanner(System.in);
     MazeNavigatorService mazeNavigatorService;

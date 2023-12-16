@@ -4,18 +4,33 @@ import org.textgame.items.Item;
 
 import java.util.ArrayList;
 
+/**
+ * The player class is what the user will be controlling and is the main hub for inventory and availableAttacks.
+ * Each player has health, a score, a list for inventory, and a list for available attacks.
+ */
 public class Player {
     private int health;
     private int score;
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private ArrayList<Attack> availableAttacks = new ArrayList<>();
 
+    /**
+     * @param item - Grabs inputted item and adds to inventory.
+     */
     public void addToInventory(Item item) {
         inventory.add(item);
     }
+
+    /**
+     * @param score - Grabs scoring and adds to the score.
+     */
     public void addToScore(int score) {
         this.score += score;
     }
+
+    /**
+     * @return - String with each inventory item.
+     */
     public String getInventory() {
         StringBuilder sb = new StringBuilder();
         sb.append("Current Inventory:\n");
@@ -31,6 +46,10 @@ public class Player {
     public ArrayList<Item> getListInventory(){
         return inventory;
     }
+
+    /**
+     * @return - Get string with available attacks.
+     */
     public String getAttacks() {
         StringBuilder sb = new StringBuilder();
         if (availableAttacks.isEmpty()) {
@@ -42,16 +61,14 @@ public class Player {
             return sb.toString();
         }
     }
+
+    /**
+     * @param attack - Add attack to the availableAttacks list.
+     */
     public void setAvailableAttacks(Attack attack){
         availableAttacks.add(attack);
     }
-    public int returnIndex(String item){
-        return item.indexOf(item);
-    }
-    public void intChangeSpecificItem(Item item, Item changedItem){
-        int index = returnIndex(item.getName());
-        inventory.set(index, changedItem);
-    }
+
     public ArrayList<Attack> getAvailableAttacks() {
         return availableAttacks;
     }

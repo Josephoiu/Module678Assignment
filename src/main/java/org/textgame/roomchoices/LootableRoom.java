@@ -3,6 +3,10 @@ package org.textgame.roomchoices;
 import org.textgame.Player;
 import org.textgame.Room;
 
+/**
+ * LootableRoom extends Room and implements the methods of Lootable. It also overrides the Lootable methods
+ * and fills in needed aspects.
+ */
 public abstract class LootableRoom extends Room implements Lootable{
     boolean lootAction;
     Player player;

@@ -2,16 +2,30 @@ package org.textgame;
 
 import org.textgame.rooms.*;
 
-public class MazeCreator {
+/**
+ * Creates rooms of varying types. Utilizes the FACTORY METHOD. Also sets their paths.
+ */
+public class MazeFactory {
     Room currentRoom;
     Player player;
-    public MazeCreator(Player player) {
+
+    /**
+     * @param player - Sets player.
+     */
+    public MazeFactory(Player player) {
         this.player = player;
     }
 
+    /**
+     * Creates and sets the rooms.
+     */
     public void createMaze(){
         createRooms();
     }
+
+    /**
+     * Creates objects for each room. It also sets the directions for each room and syncs them together.
+     */
     private void createRooms(){
         //Create Rooms
         EntranceRoom entranceRoom = new EntranceRoom("Entrance Room");
@@ -79,6 +93,12 @@ public class MazeCreator {
 
         setCurrentRoom(entranceRoom);
     }
+
+    /**
+     * @param currentRoom - Grabs the base room.
+     * @param roomBeingSet - Room that will be connected to that room.
+     * @param directions - The direction the roomBeingSet will be connected to.
+     */
     private void setDirectionRoom(Room currentRoom, Room roomBeingSet, Directions directions){
         currentRoom.setRoom(roomBeingSet,directions);
     }

@@ -5,6 +5,11 @@ import org.textgame.roomchoices.Exitable;
 import org.textgame.roomchoices.Interactable;
 import org.textgame.roomchoices.Lootable;
 
+/**
+ * The constructor creates the maze ONLY ONCE using the Singleton Pattern.
+ * The class also deals with grabbing the current rooms base info. Deals with
+ * interacting, looting, exiting, and moving rooms.
+ */
 public class MazeNavigatorService {
     private Room currentRoom;
     private static MazeNavigatorService single_instance = null;
@@ -15,10 +20,7 @@ public class MazeNavigatorService {
         if (single_instance == null) {
             single_instance = new MazeNavigatorService();
             this.player = player;
-            Fists fists = new Fists("Hands");
-            player.addToInventory(fists);
-            player.setAvailableAttacks(fists.getAttack());
-            MazeCreator mazeCreator = new MazeCreator(player);
+            MazeFactory mazeCreator = new MazeFactory(player);
             mazeCreator.createMaze();
             currentRoom = mazeCreator.getCurrentRoom();
         }

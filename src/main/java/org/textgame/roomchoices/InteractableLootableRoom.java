@@ -3,6 +3,9 @@ package org.textgame.roomchoices;
 import org.textgame.Player;
 import org.textgame.Room;
 
+/**
+ * InteractableLootableRoom extends off Room and implements Interactable and Lootable methods.
+ */
 public abstract class InteractableLootableRoom extends Room implements Interactable, Lootable {
     boolean interactAction;
     boolean lootAction;

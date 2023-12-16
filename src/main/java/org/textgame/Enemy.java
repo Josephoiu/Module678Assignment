@@ -1,8 +1,10 @@
 package org.textgame;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
+/**
+ * An abstract class used to create enemies, which have a name, health, and a list of availableAttacks.
+ */
 public abstract class Enemy {
     private String name;
     private int health;

@@ -6,10 +6,9 @@ import org.textgame.Player;
 import org.textgame.SystemAttackSystem;
 import org.textgame.enemies.ShadowHands;
 import org.textgame.items.Diamond;
-import org.textgame.roomchoices.InteractableBattleRoom;
-import org.textgame.roomchoices.InteractableLootableRoom;
+import org.textgame.roomchoices.InteractableRoom;
 
-public class ManagerRoom extends InteractableBattleRoom {
+public class ManagerRoom extends InteractableRoom {
     Diamond diamond = new Diamond("Diamond Peg");
     ColorsText colorsText = ColorsText.RESET;
     SystemAttackSystem systemAttackSystem;

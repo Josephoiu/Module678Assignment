@@ -1,5 +1,8 @@
 package org.textgame;
 
+/**
+ * Enumeration filled with GameMechanics, each has a name and singleChar equivalent for input.
+ */
 public enum GameMechanics {
     INTERACT("Interact",'i'),
     LOOT("Loot", 'l'),

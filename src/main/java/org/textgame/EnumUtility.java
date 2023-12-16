@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The EnumUtility holds one method for creating a List out of any enumeration.
+ */
 public final class EnumUtility {
     /**
      * @param enumConstants Enumeration

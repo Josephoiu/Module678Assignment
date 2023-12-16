@@ -1,5 +1,9 @@
 package org.textgame;
 
+/**
+ * AttackTypes is an enumeration that holds an attackName and damageAmount, which can be used in
+ * any attack system.
+ */
 public enum AttackTypes {
     FORCE("Force", 1),
     POISON("Poison", 2),

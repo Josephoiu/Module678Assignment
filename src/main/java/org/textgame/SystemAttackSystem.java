@@ -3,7 +3,10 @@ package org.textgame;
 import org.textgame.items.Item;
 
 import java.util.Scanner;
-
+/**
+ * System version of the battle gameplay loop. Prints out information using the system. The class also
+ * handles input.
+ */
 public class SystemAttackSystem {
     private boolean isFinished = false;
     Scanner sc = new Scanner(System.in);
@@ -18,6 +21,13 @@ public class SystemAttackSystem {
             System.out.println("\n" + item);
         }
     }
+
+    /**
+     * @param player - Sets Player
+     * @param enemy - Sets Enemy
+     * @param encounterDescription - Sets the encounters description.
+     * @param item - Sets item rewarded when battle is finished.
+     */
     public SystemAttackSystem(Player player, Enemy enemy, String encounterDescription, Item item) {
         this.enemy = enemy;
         this.player = player;
@@ -37,11 +47,15 @@ public class SystemAttackSystem {
                 System.out.println("You have conquered the " + enemy.getName() + "!");
                 System.out.println("You gain the " + item.getName());
                 player.addToInventory(item);
+                isFinished = true;
             }
         }
 
     }
 
+    /**
+     * Prints the main loop, catches if the number inputted is not available.
+     */
     private void printBaseInfo() {
         try {
             System.out.println("\nYour current health: " + player.getHealth());
@@ -51,8 +65,8 @@ public class SystemAttackSystem {
             System.out.print("Pick your attack: ");
             input = userInput();
             int numInput = Integer.parseInt(checkUserInput(input));
-            attackSystem.doDamage(attackSystem.getAttackFromIndex(numInput, player), enemy);
-            printPlayerInfo(attackSystem.getAttackFromIndex(numInput, player));
+            attackSystem.doDamage(attackSystem.getAttack(numInput, player), enemy);
+            printPlayerInfo(attackSystem.getAttack(numInput, player));
 
             Attack enemyAttack = attackSystem.getRandomEnemyAttack(enemy);
             attackSystem.doDamage(enemyAttack, player);
