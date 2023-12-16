@@ -45,7 +45,7 @@ public class SystemAttackSystem {
             }
             else if (enemy.getHealth() < 0) {
                 System.out.println("You have conquered the " + enemy.getName() + "!");
-                System.out.println("You gain the " + item.getName());
+                System.out.println("You gain the " + item.getName() + ".");
                 isFinished = true;
             }
         }

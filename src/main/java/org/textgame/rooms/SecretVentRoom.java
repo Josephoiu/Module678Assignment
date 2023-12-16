@@ -1,11 +1,15 @@
 package org.textgame.rooms;
 
+import org.textgame.ColorsText;
 import org.textgame.Player;
 import org.textgame.items.Heart;
 import org.textgame.roomchoices.LootableRoom;
 
+import java.awt.*;
+
 public class SecretVentRoom extends LootableRoom {
     Heart heart = new Heart("Heart Peg");
+    ColorsText colorsText = ColorsText.RESET;
     public SecretVentRoom(String name) {
         super(name);
     }
@@ -14,7 +18,7 @@ public class SecretVentRoom extends LootableRoom {
     public String lootDesc(Player player) {
         setLootAction(true);
         return "Picking through his ribcage, you find a heart peg!\n"+
-                heart.getItemDescription();
+                colorsText.colorString(heart.getItemDescription(), ColorsText.YELLOW);
     }
 
     @Override

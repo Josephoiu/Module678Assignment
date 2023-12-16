@@ -23,9 +23,9 @@ public class TerminalRoom extends InteractableRoom {
             if (!battleFinished) {
                 systemAttackSystem = new SystemAttackSystem(player, centipede, "Moving closer to the terminals, you notice a large centipede squirming out of the broken monitor. It looks hostile.",centipedeFang);
                 systemAttackSystem.battleLoop();
+                setInteractAction(true);
             }
         }
-        setInteractAction(true);
         return "Peeking at the terminals, you find nothing.";
     }
 
