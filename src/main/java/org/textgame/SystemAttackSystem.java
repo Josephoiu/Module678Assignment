@@ -39,14 +39,13 @@ public class SystemAttackSystem {
         printEncounterInfo();
         while (!isFinished) {
             printBaseInfo();
-            if(player.getHealth() == 0){
+            if(player.getHealth() < 0){
                 System.out.println("Death comes at unexpected times. You have lost.");
                 System.exit(0);
             }
-            else if (enemy.getHealth() == 0) {
+            else if (enemy.getHealth() < 0) {
                 System.out.println("You have conquered the " + enemy.getName() + "!");
                 System.out.println("You gain the " + item.getName());
-                player.addToInventory(item);
                 isFinished = true;
             }
         }

@@ -38,7 +38,7 @@ public class Player {
             return "Your inventory is empty.";
         } else {
             for (Item item : inventory) {
-                sb.append(item.getName()).append("\n\t").append(item.getItemDescription());
+                sb.append("\n").append(item.getName()).append("\n\t").append(item.getItemDescription());
             }
             return sb.toString();
         }

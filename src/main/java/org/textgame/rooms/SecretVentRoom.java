@@ -12,6 +12,7 @@ public class SecretVentRoom extends LootableRoom {
 
     @Override
     public String lootDesc(Player player) {
+        setLootAction(true);
         return "Picking through his ribcage, you find a heart peg!\n"+
                 heart.getItemDescription();
     }
@@ -26,6 +27,6 @@ public class SecretVentRoom extends LootableRoom {
     public Player addItem(Player player) {
         player.addToInventory(heart);
         player.addToScore(heart.getValue());
-        return null;
+        return player;
     }
 }

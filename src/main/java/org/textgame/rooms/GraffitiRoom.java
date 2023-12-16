@@ -16,7 +16,7 @@ public class GraffitiRoom extends InteractableRoom {
     public String interactDesc(Player player) {
         setInteractAction(true);
         player.addToInventory(clover);
-        return "Sliding your hand on the graffiti, you notice a painted over hidden slot hiding an item!"
+        return "Sliding your hand on the graffiti, you notice a painted over hidden slot hiding an item! "
                 + colorsText.colorString(clover.getItemDescription(), ColorsText.YELLOW);
     }
 

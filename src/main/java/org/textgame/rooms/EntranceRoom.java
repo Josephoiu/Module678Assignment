@@ -30,7 +30,8 @@ public class EntranceRoom extends InteractableRoom implements Exitable {
     }
     @Override
     public String exitText() {
-        return "Filling in the slots, they all push in and slowly open the door. Your eyes adjust to the perimeter of an abandoned power plant. Hazard tape closes off most of the areas. You successfully have escaped!";
+        return "Filling in the slots, they all push in and slowly open the door. Your eyes adjust to the perimeter of an abandoned power plant.\n" +
+                "Hazard tape closes off most of the areas. You successfully have escaped!";
     }
 
     @Override

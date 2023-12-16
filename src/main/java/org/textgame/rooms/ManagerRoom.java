@@ -26,6 +26,7 @@ public class ManagerRoom extends InteractableRoom {
             systemAttackSystem.battleLoop();
             systemAttackSystem.printInfo(lootDesc(player));
         }
+        setInteractAction(true);
         return "The " + shadowHands.getName() + " remain still.";
     }
 
